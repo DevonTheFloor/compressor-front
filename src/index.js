@@ -1,2 +1,5 @@
 import "./styles.scss";
-console.log("hello world!");
+//page
+import AccueilPage from './pages/accueil/accueil-page'
+
+AccueilPage.load()
