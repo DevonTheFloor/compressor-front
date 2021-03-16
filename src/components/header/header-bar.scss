@@ -1,0 +1,14 @@
+@import '../../styles.scss';
+
+header {
+    background-color: $primary-color;
+    color: #fff;
+    height: 4rem;
+    h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        height: 100%;
+    }
+}
