@@ -1,0 +1,19 @@
+@import '../../styles.scss';
+
+.form-upload-file {
+    background-color: $primary-color-dark;
+    width: 90%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+    }
+    input {
+        padding: 1rem 0;
+    }
+
+}
