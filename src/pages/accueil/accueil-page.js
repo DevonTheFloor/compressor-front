@@ -1,4 +1,6 @@
 const app = document.getElementById("app")
+//service
+import { sendImageFile } from './acceuil-page-service';
 // style
 import './accueil.scss'
 
@@ -16,6 +18,10 @@ const AccueilPage = {
             </section>
         `
         )
+
+        // evénement submit du composant form-upload-file
+        const formUploadFile = document.querySelector('form')
+        formUploadFile.addEventListener('submit', sendImageFile)
     }
 }
 

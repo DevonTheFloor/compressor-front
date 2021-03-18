@@ -1,5 +1,6 @@
+// import '../../styles.scss'
 import './header-bar.scss'
-import '../../styles.scss'
+
 const HeaderBar = {
     load(header) {
         return `
