@@ -1,19 +1,19 @@
 import './form-upload-file.scss'
 
-const FormUploadFile = {
-    load() {
-        
-        return `
-            <form class="form-upload-file card">
-                <label>
-                    Selectionez votre fichier
-                    <input type="file">
-                </label>
-                <button type="submit">Envoyer</button>
-            </form>
-        `   
-    }
-    
-}
 
-export default FormUploadFile;
+export default class FormUploadForm extends HTMLElement{
+    constructor() {
+        super();
+        // import('./form-upload-form.scss')
+        this.innerHTML = `
+        <form class="form-upload-file card">
+        <label>
+        Selectionez votre fichier
+        <input type="file" class="input-file">
+        </label>
+        <button type="submit" disabled>Envoyer</button>
+        </form>
+        `
+        import ('./form-upload-file-service')
+    }
+}
