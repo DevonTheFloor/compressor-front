@@ -4,17 +4,13 @@ import { sendImageFile } from './acceuil-page-service';
 // style
 import './accueil.scss'
 
-// components
-import HeaderBar from '../../components/header/header-bar'
-import FormUploadFile from '../../components/form-upload-file/form-upload-file';
-
 const AccueilPage = {
     load() {
         app.insertAdjacentHTML('beforeend',
         `
-            ${HeaderBar.load({title: "Compressor"})}
+            <header-bar title="Compressor"></header-bar>
             <section class="section-form-upload-file">
-            ${FormUploadFile.load()}
+                <form-upload-file></form-upload-file>
             </section>
         `
         )
