@@ -1,10 +1,7 @@
 import './form-upload-file.scss'
-
-
 export default class FormUploadForm extends HTMLElement{
     constructor() {
-        super();
-        // import('./form-upload-form.scss')
+        super()
         this.innerHTML = `
         <form class="form-upload-file card">
         <label>

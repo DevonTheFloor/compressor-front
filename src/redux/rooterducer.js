@@ -5,10 +5,7 @@ const rootReducer = combineReducers({
     headerBardState: headerBarReducer
 })
 
-const store = createStore(rootReducer);
-console.log(store);
-
-
+const store = createStore(rootReducer)
 
 export default store
 

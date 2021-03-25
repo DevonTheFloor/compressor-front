@@ -1,5 +1,9 @@
+import store from "../../redux/rooterducer"
+import {getTitle} from "../../components/header-bar/redux-header-bar/type"
+
 const sendImageFile = (event) => {
     event.preventDefault()
+    store.dispatch(getTitle())
     const image = event.currentTarget[0].files[0]
     // const test = JSON.stringify({
     //     test: 'test ok !'

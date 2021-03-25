@@ -1,5 +1,5 @@
 const initHeaderBardState = { 
     title: "Compressor"
-};
+}
 
-export default initHeaderBardState;
+export default initHeaderBardState
