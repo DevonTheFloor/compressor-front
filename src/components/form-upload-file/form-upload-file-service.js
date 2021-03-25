@@ -1,3 +1,5 @@
+import store from "../../redux/rooterducer";
+import { getTitle } from "../../components/header-bar/redux-header-bar/type"
 
     const inputFile = document.querySelector('.input-file');
     inputFile.addEventListener('change', (e) => {
@@ -15,4 +17,5 @@
             btnSubmit.disabled = true;
 
         }
+        store.dispatch(getTitle());
     })
