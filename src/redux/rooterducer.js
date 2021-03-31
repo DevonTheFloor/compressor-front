@@ -2,7 +2,7 @@ import headerBarReducer from '../components/header-bar/redux-header-bar/reducer'
 import { createStore, combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
-    headerBardState: headerBarReducer
+    headerBarState: headerBarReducer
 })
 
 const store = createStore(rootReducer)

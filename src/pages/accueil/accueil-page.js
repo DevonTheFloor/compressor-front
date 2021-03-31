@@ -5,28 +5,26 @@ import { sendImageFile } from './acceuil-page-service'
 import './accueil.scss'
 //redux
 import store from '../../redux/rooterducer'
+//helpers
+import {$dom} from '../../helpers/dom/dom'
 
-const AccueilPage = {
-    load() {
-        let title = store.getState().headerBardState.title
-        store.subscribe(() => {
-            title = store.getState().headerBardState.title
-        })
-        console.log("ici", typeof store.getState().headerBardState.title)
-        app.insertAdjacentHTML('beforeend',
-        `
-            <header-bar title=${title}></header-bar>
+class AccueilPage extends HTMLElement {
+    constructor() {
+        super()
+        const title = store.getState().headerBarState.title
+        this.innerHTML = `
+            <header-bar></header-bar>
             <section class="section-form-upload-file">
                 <form-upload-file></form-upload-file>
             </section>
         `
-        )
-
-        // evénement submit de form-upload-file
-        const formUploadFile = document.querySelector('form')
+        const formUploadFile = $dom.elm('form')
         formUploadFile.addEventListener('submit', sendImageFile)
         
-        
+        store.subscribe(() => {
+            const headerBar = $dom.elm('header-bar')
+            headerBar.setAttribute('_title', store.getState().headerBarState.title)
+        })
     }
 }
 

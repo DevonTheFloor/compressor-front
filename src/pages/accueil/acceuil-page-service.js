@@ -12,7 +12,7 @@ const sendImageFile = (event) => {
     // formData.append('test', test)
     formData.append('image', image)
     console.log(formData.get('image'))
-    fetch("http://localhost:3333/api/test", {
+    fetch("http://localhost:3333/test/sendfile", {
         method: "POST",
         body: formData
     })
