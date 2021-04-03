@@ -7,6 +7,7 @@ const WebComponent = {
 
         customElements.define('form-upload-file', FormUploadForm)
         customElements.define('header-bar', HeaderBar)
+        customElements.define('input-range', InputRange)
     }
 }
 

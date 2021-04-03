@@ -1,4 +1,5 @@
 import './form-upload-file.scss'
+import '../input-range/input-range.js'
 
 export default class InputRange extends HTMLElement{
     constructor() {
@@ -9,6 +10,7 @@ export default class InputRange extends HTMLElement{
             Selectionez votre fichier
             <input type="file" class="input-file">
             </label>
+            <input-range></input-range>
             <button type="submit" disabled>Envoyer</button>
         </form>
             `
