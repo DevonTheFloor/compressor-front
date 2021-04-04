@@ -1,4 +1,4 @@
-export const $dom = {
+const $dom = {
     elm(selectorCss) {
         return document.querySelector(selectorCss);
     },
@@ -7,4 +7,6 @@ export const $dom = {
         element.innerHTML = insertString
     }
 }
+
+export default $dom
 

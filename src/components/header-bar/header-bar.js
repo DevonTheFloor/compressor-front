@@ -1,5 +1,5 @@
 import "./header-bar.scss"
-import $dom from '../../helpers/dom/dom'
+import $dom from '../../helpers/dom'
 import store from '../../redux/rooterducer'
 
 export default class HeaderBar extends HTMLElement {

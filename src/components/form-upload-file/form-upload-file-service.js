@@ -1,20 +1,28 @@
-import store from "../../redux/rooterducer"
-import { getTitle } from "../../components/header-bar/redux-header-bar/type"
+import $dom from '../../helpers/dom'
 
-    const inputFile = document.querySelector('.input-file')
+    const inputFile = $dom.elm('#input-single-file')
     inputFile.addEventListener('change', (e) => {
-        console.log(e.target.files[0])
+
         const fileName = e.target.files[0].name
-        console.log(fileName)
         const fileNameSplit = fileName.split('.')
-        console.log(fileNameSplit)
         const fileNameExt = fileNameSplit[fileNameSplit.length - 1]
-        console.log(fileNameExt)
-        const btnSubmit = document.querySelector('button[type="submit"]')
-        if (fileNameExt === "png" || fileNameExt === "jpg" || fileNameExt === "jpeg") {
+        const btnSubmit = $dom.elm('button[type="submit"]')
+        const formUploadFileLabel = $dom.elm("#form-upload-file label")
+        const fileReturn = $dom.elm("#form-upload-file-return")
+        
+        // nom du fichier à télécharger
+        fileReturn.insertAdjacentHTML("beforeend", `${fileName}`)
+
+        if (fileNameExt == "png" || fileNameExt == "JPG" || fileNameExt == "jpeg" || fileNameExt == "svg") {
+            //montre à l'utilisateur que le l'image est valide
+            formUploadFileLabel.classList.add("input-valid");
+            fileReturn.style.color = "#fff"
+            //active le bouton d'envoie de fichier
             btnSubmit.disabled = false
         }else {
+            //montre à l'utilisateur que le fichier est invalide
+            formUploadFileLabel.classList.remove("input-valid");
+            fileReturn.style.color = "red"
             btnSubmit.disabled = true
-
         }
     })
