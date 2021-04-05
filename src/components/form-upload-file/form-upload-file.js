@@ -10,9 +10,8 @@ export default class FormUploadForm extends HTMLElement{
             <p class="input-file-trigger">Selectionnez votre fichier</p>
                 <input type="file" id="input-single-file" class="input-file">
             </label>
-            <p id="form-upload-file-return" class="file-return">test</p>
+            <p id="form-upload-file-return" class="file-return"></p>
             <input-range></input-range>
-
             <button type="submit" disabled>Envoyer</button>
         </form>
         `
