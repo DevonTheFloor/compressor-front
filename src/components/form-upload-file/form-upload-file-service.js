@@ -13,7 +13,7 @@ import $dom from '../../helpers/dom'
         // nom du fichier à télécharger
         fileReturn.insertAdjacentHTML("beforeend", `${fileName}`)
 
-        if (fileNameExt == "png" || fileNameExt == "JPG" || fileNameExt == "jpeg" || fileNameExt == "svg") {
+        if (fileNameExt === "png" || fileNameExt === "JPG" || fileNameExt ==="jpeg" || fileNameExt === "svg" || fileNameExt === "gif") {
             //montre à l'utilisateur que le l'image est valide
             formUploadFileLabel.classList.add("input-valid");
             fileReturn.style.color = "#fff"
