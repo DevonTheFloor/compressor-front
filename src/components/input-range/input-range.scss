@@ -1,0 +1,25 @@
+@import '../../styles.scss';
+
+input-range {
+    input[type="range"] {
+        position: relative;
+        margin-left: 1.2em;
+    }
+    input[type="range"]:after,
+    input[type="range"]:before {
+        position: absolute;
+        top: 1.2em;
+        color: #aaa;
+    }
+    input[type="range"]:before {
+        left:0em;
+        content: attr(min);
+    }
+    input[type="range"]:after {
+        right: 0em;
+        content: attr(max);
+    }
+    .outputValue {
+        color: rgb(233, 105, 105);
+    }
+}
