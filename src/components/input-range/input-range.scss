@@ -19,4 +19,7 @@ input-range {
         right: 0em;
         content: attr(max);
     }
+    .outputValue {
+        color: rgb(233, 105, 105);
+    }
 }

@@ -5,8 +5,8 @@ const sendImageFile = (event) => {
     event.preventDefault()
     store.dispatch(getTitle())
     const image = event.currentTarget[0].files[0]
-    const num_tcomp = document.getElementById('tcomp').value
-    const tcomp = String (100 - num_tcomp)
+    const num_tcomp = document.getElementById('rangeValue').value
+    const rangeValue = String (100 - num_tcomp)
     // const test = JSON.stringify({
     //     test: 'test ok !'
     // })
@@ -14,11 +14,11 @@ const sendImageFile = (event) => {
     // formData.append('test', test)
     
     formData.append('image', image)
-    formData.append('tcomp', tcomp)
+    formData.append('rangeValue', rangeValue)
     console.log('get image :')
     console.log(formData.get('image'))
     console.log('get t-comp :')
-    console.log(formData.get('tcomp'))
+    console.log(formData.get('rangeValue'))
     console.log('formData :', formData)
     fetch("http://localhost:3333/api/test/choosecomp/", {
         method: "POST",
