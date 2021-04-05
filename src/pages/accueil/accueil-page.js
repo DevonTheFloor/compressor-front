@@ -6,7 +6,7 @@ import './accueil.scss'
 //redux
 import store from '../../redux/rooterducer'
 //helpers
-import {$dom} from '../../helpers/dom/dom'
+import $dom from '../../helpers/dom'
 
 class AccueilPage extends HTMLElement {
     constructor() {
@@ -18,7 +18,7 @@ class AccueilPage extends HTMLElement {
                 <form-upload-file></form-upload-file>
             </section>
         `
-        const formUploadFile = $dom.elm('form')
+        const formUploadFile = $dom.elm('#form-upload-file')
         formUploadFile.addEventListener('submit', sendImageFile)
         
         store.subscribe(() => {

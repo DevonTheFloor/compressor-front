@@ -1,5 +1,5 @@
 import "./styles.scss"
-import { $dom } from "./helpers/dom/dom";
+import $dom from "./helpers/dom";
 
 //load components
 import WebComponent from"./components/components-load"
