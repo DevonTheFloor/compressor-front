@@ -1,26 +1,37 @@
-import store from "../../redux/rooterducer"
-import {getTitle} from "../../components/header-bar/redux-header-bar/type"
+import $files from "../../helpers/files";
+import $dom from "../../helpers/dom"
+
+const getUrlSendFile = (fileExtention) => {
+    switch (fileExtention) {
+        case "png":
+            return "http://localhost:3333/api/onepic/png/"
+        case ("jpg" || "jpeg"):
+            return "http://localhost:3333/api/onepic/jpg/"
+        case "svg":
+            return "http://localhost:3333/api/onepic/svg/"
+        case "gif":
+            return "http://localhost:3333/api/onepic/gif/"
+        default:
+            return null
+    }
+}
 
 const sendImageFile = (event) => {
     event.preventDefault()
-    store.dispatch(getTitle())
-    const image = event.currentTarget[0].files[0]
-    const num_tcomp = document.getElementById('rangeValue').value
+    const imageFile = event.currentTarget[0].files[0]
+    const fileExtention = $files.getExtention(imageFile.name).toLowerCase();
+    const num_tcomp = $dom.elm('#rangeValue').value
     const rangeValue = String (100 - num_tcomp)
-    // const test = JSON.stringify({
-    //     test: 'test ok !'
-    // })
     const formData = new FormData()
-    // formData.append('test', test)
     
-    formData.append('image', image)
+    formData.append('image', imageFile)
     formData.append('rangeValue', rangeValue)
     console.log('get image :')
     console.log(formData.get('image'))
     console.log('get t-comp :')
     console.log(formData.get('rangeValue'))
     console.log('formData :', formData)
-    fetch("http://localhost:3333/api/test/choosecomp/", {
+    fetch(getUrlSendFile(fileExtention), {
         method: "POST",
         body: formData
     })
