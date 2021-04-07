@@ -1,5 +1,8 @@
-import $dom from "../../helpers/dom"
+
 import $files from "../../helpers/files"
+import $dom from '../../helpers/dom'
+import Swal from 'sweetalert2'
+
 
     const inputFile = $dom.elm('#input-single-file')
     inputFile.addEventListener('change', (e) => {
@@ -20,6 +23,14 @@ import $files from "../../helpers/files"
             //active le bouton d'envoie de fichier
             btnSubmit.disabled = false
         }else {
+            //alert l'utilisateur que son fichier n'est pas valide
+            Swal.fire(
+                {
+                    icon: 'error',
+                    title: "Oops...",
+                    text: "Ce fichier n'est pas valide. Seul les images (pgn, jpeg, jpg, svp et gif) sont accepté ! Selectionner une autre image, merci.",
+                }
+              )
             //montre à l'utilisateur que le fichier est invalide
             formUploadFileLabel.classList.remove("input-valid");
             fileReturn.style.color = "red"
