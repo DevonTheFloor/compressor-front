@@ -1,11 +1,11 @@
-import $dom from '../../helpers/dom'
+import $dom from "../../helpers/dom"
+import $files from "../../helpers/files"
 
     const inputFile = $dom.elm('#input-single-file')
     inputFile.addEventListener('change', (e) => {
 
         const fileName = e.target.files[0].name
-        const fileNameSplit = fileName.split('.')
-        const fileNameExt = fileNameSplit[fileNameSplit.length - 1].toLowerCase()
+        const fileNameExt = $files.getExtention(fileName).toLowerCase()
         const btnSubmit = $dom.elm('button[type="submit"]')
         const formUploadFileLabel = $dom.elm("#form-upload-file label")
         const fileReturn = $dom.elm("#form-upload-file-return")
