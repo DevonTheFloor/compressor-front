@@ -35,12 +35,24 @@ const sendImageFile = (event) => {
     //annimation submit
     const btmSubmit = $dom.elm("#form-uplaod-file__btn-submit")
     btmSubmit.classList.add("anim-submit")
+    //attente réponse api...
+    setTimeout(() => {
+        // const zoneBtn = $dom.elm("#form-uplaod-file__zone-btn")
+        // zoneBtn.insertAdjacent("beforeend", `<loader-submit></loader-submit>`)
+        $dom.insertBeforeEnd("#form-uplaod-file__zone-btn", "<loader-submit></loader-submit>")
+    }, 1000);
+    
     //envoie de l'image
     fetch(getUrlSendFile(fileExtention), {
         method: "POST",
         body: formData
     })
-    .then(res => console.log('lien :', res))
+    .then(res => {
+        console.log('lien :', res)
+        setTimeout(() => {
+            $dom.removeElm("loader-submit")
+        }, 5000);
+    })
 }
 
 export {sendImageFile}
