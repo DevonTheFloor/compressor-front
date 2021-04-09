@@ -3,8 +3,7 @@ export default class InputRange extends HTMLElement{
     constructor() {
         super()
         this.innerHTML = `
-        <div>
-            <label>Taux de compression:<output class="outputValue" name="outputValue">50</output>
+        <label>Taux de compression:<output class="outputValue" name="outputValue">50</output>
             <input type="range" id="rangeValue" name="inputValue" min="10" max="100" value="50" step="5" list="tocomp">
             <datalist id="rangeValue">
                 <option value="10" label="10%">
@@ -28,8 +27,7 @@ export default class InputRange extends HTMLElement{
                 <option value="95">
                 <option value="100" label="100%">
             </datalist>
-            </label>
-        </div>
+        </label>
         `
     }
 }

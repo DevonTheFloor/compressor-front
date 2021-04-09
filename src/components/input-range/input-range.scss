@@ -1,9 +1,18 @@
 @import '../../styles.scss';
 
 input-range {
+    width: 80%;
+    label {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: left;
+        color: #000;
+    }
     input[type="range"] {
         position: relative;
-        margin-left: 1.2em;
+        margin-top: 2rem;
+        width: 100%;
     }
     input[type="range"]:after,
     input[type="range"]:before {
@@ -20,6 +29,7 @@ input-range {
         content: attr(max);
     }
     .outputValue {
+        padding-left: 1rem;
         color: rgb(233, 105, 105);
     }
 }
