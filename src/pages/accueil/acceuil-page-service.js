@@ -1,5 +1,6 @@
 import $files from "../../helpers/files";
 import $dom from "../../helpers/dom"
+import Swal from 'sweetalert2'
 
 const getUrlSendFile = (fileExtention) => {
     switch (fileExtention) {
@@ -34,9 +35,11 @@ const sendImageFile = (event) => {
     console.log('get t-comp :')
     console.log(formData.get('rangeValue'))
     console.log('formData :', formData)
+
     //annimation submit
     const btmSubmit = $dom.elm("#form-uplaod-file__btn-submit")
     btmSubmit.classList.add("anim-submit")
+
     //attente réponse api...
     setTimeout(() => {
         if (!isResponse) {
@@ -50,13 +53,20 @@ const sendImageFile = (event) => {
         body: formData
     })
     .then(response => response.json())
-    .then(response => {
+    .then(pictureUrl => {
         isResponse = true
         $dom.removeElm("loader-submit")
-        console.log('response :', response)
+        btmSubmit.classList.remove("anim-submit")
+        Swal.fire({
+            imageUrl: `${pictureUrl.message}`,
+            imageAlt: 'image compressé'
+          })
+        console.log('pictureUrl :', pictureUrl.message)
     })
     .catch(error => {
-        // $dom.removeElm("loader-submit")
+        isResponse = true
+        $dom.removeElm("loader-submit")
+        btmSubmit.classList.remove("anim-submit")
         console.log('Request Failed', error)
     });
     
