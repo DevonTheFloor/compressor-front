@@ -42,17 +42,60 @@ form-upload-file {
             text-align: center;
         }
 
+
+        .zone-btn {
+            overflow: hidden;
+            width: 80%;
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
         button[type="submit"] {
             border-radius: .5rem;
             background-color: $secondary-color;
-            padding: .5rem 2rem;
+            padding: .6rem 2rem;
+            outline: none;
         }
 
         .input-valid {
             border: dashed 5px $valid-color;
             box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
         }
+
+        .anim-submit {
+            animation: submit 500ms forwards ease-in-out;
+            border: none
+        }
         
     }
     
 }
+
+@keyframes submit {
+    1% {
+        transform: translateX(-1rem) scaleX(0.8);
+        transform-origin: left;
+        // transition-delay: 1s;
+    }
+    60% {
+        transform: translateX(0rem) scaleX(1) scaleY(.9);
+        opacity: 1;
+        // transition-delay: 1s;
+    }
+    75% {
+
+        transform: translateX(5rem) scaleX(1) scaleY(.6);
+        opacity: .8;
+    }
+    80% {
+
+        transform: translateX(5rem) scaleX(1) scaleY(.5);
+        opacity: .5;
+    }
+  
+    100% {
+        transform: translateX(100rem);
+    }
+  }

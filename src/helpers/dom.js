@@ -5,6 +5,12 @@ const $dom = {
     innerHTMLElm(selectorCss, insertString) {
         const element = document.querySelector(selectorCss)
         element.innerHTML = insertString
+    },
+    removeElm(selectorCss) {
+        this.elm(selectorCss).remove()
+    },
+    insertBeforeEnd(selectorCss, insertString) {
+        this.elm(selectorCss).insertAdjacentHTML("beforeend", insertString);
     }
 }
 
