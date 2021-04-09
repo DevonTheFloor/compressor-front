@@ -12,7 +12,9 @@ export default class FormUploadForm extends HTMLElement{
             </label>
             <p id="form-upload-file-return" class="file-return"></p>
             <input-range></input-range>
-            <button type="submit" disabled>Envoyer</button>
+            <div class="zone-btn">
+                <button type="submit" id="form-uplaod-file__btn-submit" disabled>Envoyer</button>
+            </div>
         </form>
         `
 

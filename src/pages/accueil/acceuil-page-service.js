@@ -18,6 +18,7 @@ const getUrlSendFile = (fileExtention) => {
 
 const sendImageFile = (event) => {
     event.preventDefault()
+
     const imageFile = event.currentTarget[0].files[0]
     const fileExtention = $files.getExtention(imageFile.name).toLowerCase();
     const num_tcomp = $dom.elm('#rangeValue').value
@@ -31,6 +32,10 @@ const sendImageFile = (event) => {
     console.log('get t-comp :')
     console.log(formData.get('rangeValue'))
     console.log('formData :', formData)
+    //annimation submit
+    const btmSubmit = $dom.elm("#form-uplaod-file__btn-submit")
+    btmSubmit.classList.add("anim-submit")
+    //envoie de l'image
     fetch(getUrlSendFile(fileExtention), {
         method: "POST",
         body: formData
