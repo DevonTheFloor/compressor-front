@@ -14,6 +14,7 @@ import Swal from 'sweetalert2'
         const fileReturn = $dom.elm("#form-upload-file-return")
         
         // nom du fichier à télécharger
+        fileReturn.innerHTML = "";
         fileReturn.insertAdjacentHTML("beforeend", `${fileName}`)
 
         if (fileNameExt === "png" || fileNameExt === "jpg" || fileNameExt ==="jpeg" || fileNameExt === "svg" || fileNameExt === "gif") {
