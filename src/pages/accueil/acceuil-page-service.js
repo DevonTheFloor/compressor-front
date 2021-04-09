@@ -19,6 +19,8 @@ const getUrlSendFile = (fileExtention) => {
 const sendImageFile = (event) => {
     event.preventDefault()
 
+    let isResponse = false;
+
     const imageFile = event.currentTarget[0].files[0]
     const fileExtention = $files.getExtention(imageFile.name).toLowerCase();
     const num_tcomp = $dom.elm('#rangeValue').value
@@ -37,22 +39,27 @@ const sendImageFile = (event) => {
     btmSubmit.classList.add("anim-submit")
     //attente réponse api...
     setTimeout(() => {
-        // const zoneBtn = $dom.elm("#form-uplaod-file__zone-btn")
-        // zoneBtn.insertAdjacent("beforeend", `<loader-submit></loader-submit>`)
-        $dom.insertBeforeEnd("#form-uplaod-file__zone-btn", "<loader-submit></loader-submit>")
-    }, 1000);
+        if (!isResponse) {
+            $dom.insertBeforeEnd("#form-uplaod-file__zone-btn", "<loader-submit></loader-submit>")
+        }
+    }, 500);
     
     //envoie de l'image
     fetch(getUrlSendFile(fileExtention), {
         method: "POST",
         body: formData
     })
-    .then(res => {
-        console.log('lien :', res)
-        setTimeout(() => {
-            $dom.removeElm("loader-submit")
-        }, 5000);
+    .then(response => response.json())
+    .then(response => {
+        isResponse = true
+        $dom.removeElm("loader-submit")
+        console.log('response :', response)
     })
+    .catch(error => {
+        // $dom.removeElm("loader-submit")
+        console.log('Request Failed', error)
+    });
+    
 }
 
 export {sendImageFile}
