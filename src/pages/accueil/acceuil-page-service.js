@@ -2,16 +2,20 @@ import $files from "../../helpers/files";
 import $dom from "../../helpers/dom"
 import Swal from 'sweetalert2'
 
+
 const getUrlSendFile = (fileExtention) => {
+
+    const HOST = "localhost"
+
     switch (fileExtention) {
         case "png":
-            return "http://localhost:3333/api/onepic/png/"
+            return `http://${HOST}:3333/api/onepic/png/`
         case ("jpg" || "jpeg"):
-            return "http://localhost:3333/api/onepic/jpg/"
+              return `http://${HOST}:3333/api/onepic/jpg/`
         case "svg":
-            return "http://localhost:3333/api/onepic/svg/"
+            return `http://${HOST}:3333/api/onepic/svg/`
         case "gif":
-            return "http://localhost:3333/api/onepic/gif/"
+            return `http://${HOST}:3333/api/onepic/gif/`
         default:
             return null
     }
@@ -53,15 +57,15 @@ const sendImageFile = (event) => {
         body: formData
     })
     .then(response => response.json())
-    .then(pictureUrl => {
+    .then(response => {
         isResponse = true
         $dom.removeElm("loader-submit")
         btmSubmit.classList.remove("anim-submit")
         Swal.fire({
-            imageUrl: `${pictureUrl.message}`,
+            imageUrl: `${response.pictureLink}`,
             imageAlt: 'image compressé'
           })
-        console.log('pictureUrl :', pictureUrl.message)
+        console.log('pictureUrl :', response.pictureLink)
     })
     .catch(error => {
         isResponse = true
