@@ -1,7 +1,11 @@
 import $files from "../../helpers/files";
-import $dom from "../../helpers/dom"
-import Swal from 'sweetalert2'
+import $dom from "../../helpers/dom";
+import Swal from 'sweetalert2';
+import { saveAs } from 'file-saver';
 
+//suppression de l'image sur le
+
+console.log("env", process.env);
 
 const getUrlSendFile = (fileExtention) => {
 
@@ -21,6 +25,16 @@ const getUrlSendFile = (fileExtention) => {
     }
 }
 
+const deletePictureAPI = (filenamePicture) => {
+    fetch(`http://localhost:3333/api/handleImages/${filenamePicture}`, {
+        method: "DELETE"
+    })
+    .then(response => response.json())
+    .then((response) => {
+        console.log(response);
+    })
+}
+
 const sendImageFile = (event) => {
     event.preventDefault()
 
@@ -34,11 +48,11 @@ const sendImageFile = (event) => {
     
     formData.append('image', imageFile)
     formData.append('rangeValue', rangeValue)
-    console.log('get image :')
-    console.log(formData.get('image'))
-    console.log('get t-comp :')
-    console.log(formData.get('rangeValue'))
-    console.log('formData :', formData)
+    // console.log('get image :')
+    // console.log(formData.get('image'))
+    // console.log('get t-comp :')
+    // console.log(formData.get('rangeValue'))
+    // console.log('formData :', formData)
 
     //annimation submit
     const btmSubmit = $dom.elm("#form-uplaod-file__btn-submit")
@@ -63,9 +77,20 @@ const sendImageFile = (event) => {
         btmSubmit.classList.remove("anim-submit")
         Swal.fire({
             imageUrl: `${response.pictureLink}`,
-            imageAlt: 'image compressé'
+            imageAlt: "image compressé",
+            confirmButtonText: "Sauvegarder",
+            showDenyButton: true,
+            denyButtonText: "Annuler"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                saveAs(response.pictureLink, response.filename, {type: "text/plain;charset=utf-8"});
+                deletePictureAPI(response.filename);
+            }else if (result.isDenied) {
+                deletePictureAPI(response.filename);
+              }
           })
-        console.log('pictureUrl :', response.pictureLink)
+        console.log('pictureUrl :', response.pictureLink);
+        
     })
     .catch(error => {
         isResponse = true
