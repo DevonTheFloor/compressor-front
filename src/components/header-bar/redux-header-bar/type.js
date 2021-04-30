@@ -1,6 +1,6 @@
-export const GET_TITLE = "GET_TITLE"
+export const GET_TITLE = "GET_TITLE";
 
 //action
 export const getTitle = () => {
-    return {type: GET_TITLE}
-}
+    return {type: GET_TITLE};
+};

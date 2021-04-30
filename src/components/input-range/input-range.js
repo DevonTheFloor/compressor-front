@@ -1,7 +1,7 @@
-import './input-range.scss'
+import "./input-range.scss";
 export default class InputRange extends HTMLElement{
     constructor() {
-        super()
+        super();
         this.innerHTML = `
         <label>Taux de compression:<output class="outputValue" name="outputValue">50</output>
             <input type="range" id="rangeValue" name="inputValue" min="10" max="100" value="50" step="5" list="tocomp">
@@ -28,6 +28,6 @@ export default class InputRange extends HTMLElement{
                 <option value="100" label="100%">
             </datalist>
         </label>
-        `
+        `;
     }
 }

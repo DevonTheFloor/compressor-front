@@ -1,5 +1,5 @@
-import './form-upload-file.scss'
-import '../input-range/input-range.js'
+import './form-upload-file.scss';
+import '../input-range/input-range.js';
 
 export default class FormUploadForm extends HTMLElement{
     constructor() {
@@ -18,6 +18,6 @@ export default class FormUploadForm extends HTMLElement{
         </form>
         `
 
-        import ('./form-upload-file-service')
+        import ('./form-upload-file-service');
     }
 }
