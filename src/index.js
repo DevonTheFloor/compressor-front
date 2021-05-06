@@ -10,7 +10,7 @@ import webPagesComponent from "./pages/pages-load";
 webPagesComponent.load();
 
 // lancement de l'app
-$dom.innerHTMLElm("#app", "<accueil-page></accueil-page>");
+$dom.innerHTMLElm("#app", "<send-multi-files></send-multi-files>");
 
 
 
