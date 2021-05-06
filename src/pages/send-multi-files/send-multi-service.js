@@ -4,21 +4,58 @@ import Swal from "sweetalert2";
 import { saveAs } from "file-saver";
 import ENV from "../../environment/environment";
 
-const startCompressFiles = () => {
+//soket.io
+import { io } from "socket.io-client";
+const startCompressFiles = (event) => {
+    event.preventDefault();
+    const compressPictureData = {nomberOfPicture: event.currentTarget[0].files.length};
 
+    const socket = io("http://localhost:3333", { transport : ["websocket"] });
+
+    console.log(event.currentTarget[0].files.length);
+    const picturesFiles = event.currentTarget[0].files;
+    // début de la demande de compression d'image
+    socket.emit("startCompressFiles", JSON.stringify(compressPictureData));
+    //reception (depuis l'api) de l'identifiant de l'opération de la compression d'images
+    socket.on("startCompressFiles", (data) => {
+        const dataReceived = JSON.parse(data);
+        console.log("dataReceived", dataReceived);
+        const compressPictureId = dataReceived.compressPictureId;
+
+        sendImageFile(compressPictureId, picturesFiles);
+    });
+    // compression d'une image: terminée
+    socket.on("conpressOnePictureFinish", (pinctureLinkJSON) => {
+        const pinctureLink = JSON.parse(pinctureLinkJSON);
+        console.log("pinctureLink", pinctureLink);
+
+        //ajout de l'url de l'image dans le tableau des images compressées/ (passer par redux?)
+
+        //afficher l'image dans la galerie d'images
+
+    });
+    // compression de toutes les images: terminées
+    socket.on("compressAllPicturesFinish", () => {
+        console.log("compression terminé");
+
+        // se désabonner.
+
+        //signaler à l'utilisateur que la compression est terminé
+
+    });
 };
 
 const getUrlSendFile = (fileExtention) => {
 
     switch (fileExtention) {
     case "png":
-        return `http://${ENV.API_HOST}:3333/api/onepic/png/`;
+        return `http://${ENV.API_HOST}:3333/api/onepic/multi/png/`;
     case ("jpg" || "jpeg"):
-        return `http://${ENV.API_HOST}:3333/api/onepic/jpg/`;
+        return `http://${ENV.API_HOST}:3333/api/onepic/multi/jpg/`;
     case "svg":
-        return `http://${ENV.API_HOST}:3333/api/onepic/svg/`;
+        return `http://${ENV.API_HOST}:3333/api/onepic/multi/svg/`;
     case "gif":
-        return `http://${ENV.API_HOST}:3333/api/onepic/gif/`;
+        return `http://${ENV.API_HOST}:3333/api/onepic/multi/gif/`;
     default:
         return null;
     }
@@ -34,12 +71,12 @@ const deletePictureAPI = (filenamePicture) => {
         });
 };
 
-const sendImageFile = (event) => {
-    event.preventDefault();
+const sendImageFile = (compressPictureId, picturesFiles) => {
 
+    console.log(picturesFiles);
     let isResponse = false;
 
-    const picturesFiles = event.currentTarget[0].files;
+    // const picturesFiles = event.currentTarget[0].files;
 
     //annimation submit
     const btmSubmit = $dom.elm("#form-uplaod-file__btn-submit");
@@ -56,6 +93,7 @@ const sendImageFile = (event) => {
         const formData = new FormData();
         formData.append("image", picturefile);
         formData.append("rangeValue", rangeValue);
+        formData.append("compressPictureId", compressPictureId);
 
         // log en developpement
         if (ENV.MODE === "development") {
@@ -113,4 +151,4 @@ const sendImageFile = (event) => {
         
 };
 
-export {sendImageFile, deletePictureAPI};
+export {sendImageFile, deletePictureAPI, startCompressFiles};

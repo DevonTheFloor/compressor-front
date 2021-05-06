@@ -1,6 +1,6 @@
 // const app = document.getElementById("app");
 //service
-import { sendImageFile } from "./send-multi-service";
+import { startCompressFiles } from "./send-multi-service";
 // style
 import "./send-multi.scss";
 //redux
@@ -19,7 +19,7 @@ class SendMultiFiles extends HTMLElement {
             </section>
         `;
         const formUploadFile = $dom.elm("#form-upload-file");
-        formUploadFile.addEventListener("submit", sendImageFile);
+        formUploadFile.addEventListener("submit", startCompressFiles);
         
         store.subscribe(() => {
             const headerBar = $dom.elm("header-bar");
