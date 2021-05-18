@@ -36,10 +36,15 @@ form-upload-file {
             }
         }
 
-        .file-return{
-            color: #fff;
-            font-size: clamp(1.2rem, 3.5vw, 2rem);
-            text-align: center;
+        .files-return{
+            li{
+                color: #fff;
+                font-size: clamp(1.2rem, 3.5vw, 2rem);
+                text-align: center;
+            }
+            .file-return--invalid{
+                color: red;
+            }
         }
 
 

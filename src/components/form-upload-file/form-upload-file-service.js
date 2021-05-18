@@ -3,38 +3,41 @@ import $files from "../../helpers/files";
 import $dom from "../../helpers/dom";
 import Swal from "sweetalert2";
 
-
 const inputFile = $dom.elm("#input-single-file");
+
 inputFile.addEventListener("change", (e) => {
-
-    const fileName = e.target.files[0].name;
-    const fileNameExt = $files.getExtention(fileName).toLowerCase();
-    const btnSubmit = $dom.elm("button[type=\"submit\"]");
+    const filesReturn = $dom.elm("#form-upload-files-return");
     const formUploadFileLabel = $dom.elm("#form-upload-file label");
-    const fileReturn = $dom.elm("#form-upload-file-return");
-        
-    // nom du fichier à télécharger
-    fileReturn.innerHTML = "";
-    fileReturn.insertAdjacentHTML("beforeend", `${fileName}`);
+    const btnSubmit = $dom.elm("button[type=\"submit\"]");
 
-    if (fileNameExt === "png" || fileNameExt === "jpg" || fileNameExt ==="jpeg" || fileNameExt === "svg" || fileNameExt === "gif") {
-        //montre à l'utilisateur que le l'image est valide
-        formUploadFileLabel.classList.add("input-valid");
-        fileReturn.style.color = "#fff";
-        //active le bouton d'envoie de fichier
-        btnSubmit.disabled = false;
-    }else {
-        //alert l'utilisateur que son fichier n'est pas valide
-        Swal.fire(
-            {
-                icon: "error",
-                title: "Oops...",
-                text: "Ce fichier n'est pas valide. Seul les images (pgn, jpeg, jpg, svp et gif) sont accepté ! Selectionner une autre image, merci.",
-            }
-        );
-        //montre à l'utilisateur que le fichier est invalide
-        formUploadFileLabel.classList.remove("input-valid");
-        fileReturn.style.color = "red";
-        btnSubmit.disabled = true;
+    //A FAIRE: ajouter l'ajout multiple d'image vennant de dossiers diférents.
+    filesReturn.innerHTML = "";
+
+    btnSubmit.disabled = false;
+    formUploadFileLabel.classList.add("input-valid");
+
+    for(let file of e.target.files) {
+        const fileName = file.name;
+        const fileNameExt = $files.getExtention(fileName).toLowerCase();
+        
+        if (fileNameExt === "png" || fileNameExt === "jpg" || fileNameExt ==="jpeg" || fileNameExt === "svg" || fileNameExt === "gif") {
+            filesReturn.insertAdjacentHTML("beforeend", `<li>${fileName}</li>`);
+        }else {
+            //alert l'utilisateur que son fichier n'est pas valide
+            filesReturn.insertAdjacentHTML("beforeend", `<li class="file-return--invalid">${fileName}</li>`);
+            
+            Swal.fire(
+                {
+                    icon: "error",
+                    title: "Oops...",
+                    text: "L'un de ces fichiers n'est pas valide. Seul les images (pgn, jpeg, jpg, svp et gif) sont accepté ! Selectionner d'autre images, merci.",
+                }
+            );
+
+            btnSubmit.disabled = true;
+            formUploadFileLabel.classList.remove("input-valid");
+        }
+
     }
+   
 });

@@ -8,9 +8,9 @@ export default class FormUploadForm extends HTMLElement{
         <form id="form-upload-file" oninput="outputValue.value=parseInt(inputValue.value)" class="form-upload-file card">
             <label class="input-file-container">
             <p class="input-file-trigger">Selectionnez votre fichier</p>
-                <input type="file" multiple id="input-single-file" class="input-file">
+                <input type="file" id="input-single-file" class="input-file">
             </label>
-            <ul id="form-upload-files-return" class="files-return"></ul>
+            <p id="form-upload-file-return" class="file-return"></p>
             <input-range></input-range>
             <div id="form-uplaod-file__zone-btn" class="zone-btn">
                 <button type="submit" id="form-uplaod-file__btn-submit" disabled>Envoyer</button>
