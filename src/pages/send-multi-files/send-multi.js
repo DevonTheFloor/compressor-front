@@ -22,8 +22,8 @@ class SendMultiFiles extends HTMLElement {
         formUploadFile.addEventListener("submit", startCompressFiles);
         
         store.subscribe(() => {
-            const headerBar = $dom.elm("header-bar");
-            headerBar.setAttribute("_title", store.getState().headerBarState.title);
+            // const headerBar = $dom.elm("header-bar");
+            // headerBar.setAttribute("_title", store.getState().headerBarState.title);
         });
     }
 }

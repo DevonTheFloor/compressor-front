@@ -28,7 +28,7 @@ const startCompressFiles = (event) => {
         //enregistrement dans le store des informations de l'opération de compression d'image
         store.dispatch({
             type: "INIT_DATA_PICTURE_COMPRESS",
-            numberPictures,
+            numberPictures: numberPictures.nomberOfPicture,
             compressPictureId,
         });
         // envoie des images en http
@@ -43,25 +43,25 @@ const startCompressFiles = (event) => {
         store.dispatch({
             type: "DECREMENT_NUMBER_PICTURE_COMPRESS",
         });
- 
         //ajout de l'url de l'image dans le tableau des images compressées/ (passer par redux?)
         store.dispatch({
             type: "ADD_NEW_LINK_PICTURE",
-            newLinkPicture: pinctureLink
+            newDataPictures: {pinctureLink}
         });
 
         //afficher l'image dans la galerie d'images
         console.log("links pictures: ", store.getState().pictureCompressState.linkPicture);
-        if ($dom.elm("form-upload-file")) {
-            $dom.removeElm(".section-form-upload-file");
-            const elmPageAccueil = $dom.elm("send-multi-files");
-            elmPageAccueil.insertAdjacentHTML("beforeend", "<ul id='pictureGallery'></ul>");
+        if ($dom.elm("send-multi-files")) {
+            $dom.removeElm("send-multi-files");
+            $dom.elm("#app").innerHTML = "<dashboard-picture></dashboard-picture>";
+            // const elmPageAccueil = $dom.elm("send-multi-files");
+            // elmPageAccueil.insertAdjacentHTML("beforeend", "<ul id='pictureGallery'></ul>");
         }
 
         //ajout d'une image dans la galerie d'image. (A FAIRE: créer un composant pictureGallery qui écoute le store pictureCompressState à l'aide de la fonction subscribe() ==> et modifier l'affichage des images en conséquence)
         // CODE PROVISOIRE Pour démonstration !!!
-        const pictureGallery = $dom.elm("#pictureGallery");
-        pictureGallery.insertAdjacentHTML("beforeend", `<li><img src=${pinctureLink} alt=""></li>`);
+        // const pictureGallery = $dom.elm("#pictureGallery");
+        // pictureGallery.insertAdjacentHTML("beforeend", `<li><img src=${pinctureLink} alt=""></li>`);
     });
 
     // compression de toutes les images: terminées
