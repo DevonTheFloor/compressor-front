@@ -7,18 +7,25 @@ const dataPictureCompressReducer = (state = {}, action) => {
         return {
             ...state,
             numberPictures: action.numberPictures,
-            linkPicture: [],
+            dataPictures: [],
             compressPictureId: action.compressPictureId
         };
     case "ADD_NEW_LINK_PICTURE":
         return {
             ...state,
-            linkPicture: [...state.linkPicture, action.newLinkPicture],
+            dataPictures: [...state.dataPictures, action.newDataPictures],
         };
     case "DECREMENT_NUMBER_PICTURE_COMPRESS":
         return {
             ...state,
             numberPictures: state.numberPictures--,
+        };
+    case "GET_PICTURES_LINKS":
+        return state.dataPictures.map(dataPicture => dataPicture.pinctureLink);
+
+    case "GET_PICTURES_DATA":
+        return {
+            ...state,
         };
     
     default: return state;
