@@ -1,6 +1,6 @@
 import AccueilPage from "./accueil/accueil-page";
 import SendMultiFiles from "./send-multi-files/send-multi";
-import CardImage from "./../components/card-image/card-image";
+import CardImage from "../components/card-image/card-image";
 
 const webPagesComponent = {
     load() {

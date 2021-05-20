@@ -17,6 +17,9 @@ class SendMultiFiles extends HTMLElement {
             <section class="section-form-upload-file">
                 <form-upload-file></form-upload-file>
             </section>
+            <section>
+                <card-image></card-image> 
+            </section>
         `;
         const formUploadFile = $dom.elm("#form-upload-file");
         formUploadFile.addEventListener("submit", startCompressFiles);

@@ -1,3 +1,5 @@
+import store from "../../redux/rooterducer";
+
 /* var dataCard: {
     CompressId,
     resolution,
@@ -6,3 +8,6 @@
     pictureCompressUrl,
     pictureOrigineUrl 
 }; */
+const deleteImage = () => {
+    console.log("DELETE Function");
+};
