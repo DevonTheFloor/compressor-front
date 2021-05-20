@@ -1,4 +1,3 @@
-import store from "../../redux/rooterducer";
 
 /* var dataCard: {
     CompressId,
@@ -8,6 +7,10 @@ import store from "../../redux/rooterducer";
     pictureCompressUrl,
     pictureOrigineUrl 
 }; */
-const deleteImage = () => {
-    console.log("DELETE Function");
+export default {
+
+    deleteImage() {
+        console.log("DELETE Function");
+    },
 };
+
