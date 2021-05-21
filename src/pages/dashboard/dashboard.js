@@ -1,11 +1,14 @@
+import "./dashbord.scss";
+
 export default class DashboardCompressPicture extends HTMLElement {
     constructor() {
         super();
 
         this.innerHTML = `
-        <h1>Image compressé en attente</h1>
+        <header-bar></header-bar>
+        <h2>Image compressé en attente</h2>
         <section>
-            <galery-image></galery-image>
+            <galery-images></galery-images>
         </section>
         `;
     }

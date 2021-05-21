@@ -2,6 +2,7 @@ import "./galery.scss";
 //redux
 import store from "../../redux/rooterducer";
 
+//template
 const galeryPicture = (ListCard) => {
     return `
     <ul>
@@ -16,39 +17,29 @@ const galeryPicture = (ListCard) => {
 
 export default class Galery extends HTMLElement {
 
+    //propriété
     static get observedAttributes() { return ["compressor-id"]; }
 
     
     constructor() {
         super();
-        this.ListCard = [];
+        this.ListCards = [];
     }
 
     connectedCallback() { 
-        // console.log("admin: strore:", store.getState().pictureCompressState.dataPictures[0].pinctureLink);
-        if (store.getState().pictureCompressState.dataPictures[0].pinctureLink) {
-            this.ListCard = store.getState().pictureCompressState.dataPictures;
-            console.log("admin: this.ListCard: ", this.ListCard);
+        //récupération des informations de la liste des images compressées
+        if (store.getState().pictureCompressState.dataPictures) {
+            this.ListCards = store.getState().pictureCompressState.dataPictures;
         }
-
-        this.innerHTML = galeryPicture(this.ListCard);
+        //innitialisation du template
+        this.innerHTML = galeryPicture(this.ListCards);
 
         store.subscribe(() => {
-            console.log("STORE: ", store.getState().pictureCompressState.dataPictures);
-            this.ListCard = store.getState().pictureCompressState.dataPictures;
-            this.innerHTML = galeryPicture(this.ListCard);
-            
+            // récupération des information de la nouvelle liste des images compréssées
+            this.ListCards = store.getState().pictureCompressState.dataPictures;
+            // mis à jour du template
+            this.innerHTML = galeryPicture(this.ListCards);
         });
             
     }
-
-    
-
-    // attributeChangedCallback(nameAtr, oldValue, newValue) {
-    //     if (nameAtr === "_title" && newValue !== oldValue) {
-    //         this._title = newValue;
-    //         this.querySelector("header h1").innerHTML = this._title;
-    //     }
-    // }
-
 }

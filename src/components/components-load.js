@@ -12,7 +12,7 @@ const WebComponent = {
         customElements.define("header-bar", HeaderBar);
         customElements.define("input-range", InputRange);
         customElements.define("loader-submit", LoaderSubmit);
-        customElements.define("galery-image", Galery);
+        customElements.define("galery-images", Galery);
         customElements.define("card-image", CardImage);
     }
 };
