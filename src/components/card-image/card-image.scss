@@ -1,0 +1,55 @@
+@import "../../styles.scss";
+
+card-image {
+    .card-image {
+        padding: 1%;
+        border: thick double grey;
+        border-radius: 25px;
+        max-width: 25%;
+        box-shadow: 3px 3px 3px rgb(109, 103, 103);
+        transition: all;
+        transition: transform 800ms ease, box-shadow 700ms ease;
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 9px 9px 9px rgb(22, 21, 21);
+        }
+    }
+    #print-img{
+        background-color: rgb(190, 187, 187);
+        &:hover {
+            background-color:  rgb(231, 147, 231);
+        }
+    }
+    #del-img {
+        background-color: rgb(190, 187, 187);
+        &:hover {
+            background-color: rgb(229, 138, 138);
+        }
+    }
+    #download-img {
+        background-color: rgb(190, 187, 187);
+        &:hover {
+            background-color: rgb(118, 148, 54);
+        }
+    }
+    .action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;        
+    }
+    .action__btn {
+        border-radius: 5px;
+        transition: box-shadow 400ms ease;
+        &:hover {
+            cursor: pointer;
+            box-shadow: 3px 3px 3px rgb(144, 140, 140);
+        }
+    }
+    .monitor {
+        border: 1px solid grey;
+        max-width: 100%;
+        height: auto;
+    }
+
+}

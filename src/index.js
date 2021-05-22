@@ -11,6 +11,7 @@ webPagesComponent.load();
 
 // lancement de l'app
 $dom.innerHTMLElm("#app", "<send-multi-files></send-multi-files>");
+// $dom.innerHTMLElm("#app", "<card-image></card-image>");
 
 
 
