@@ -2,6 +2,8 @@ import "./galery.scss";
 //redux
 import store from "../../redux/rooterducer";
 
+const test = [{pinctureLink: "https://humour-france.fr/wp-content/uploads/2019/03/Vous-avez-vu-toutes-ces-citrouilles.jpg", size: "4589", rangeValue: "50"},{pinctureLink: "https://humour-france.fr/wp-content/uploads/2019/03/Vous-avez-vu-toutes-ces-citrouilles.jpg", size: "5894", rangeValue: "70"},{pinctureLink: "https://humour-france.fr/wp-content/uploads/2019/03/Vous-avez-vu-toutes-ces-citrouilles.jpg", size: "9874", rangeValue: "25"}];
+
 //template
 const galeryPicture = (listCard) => {
     return `
@@ -36,13 +38,13 @@ export default class Galery extends HTMLElement {
             this.listCards = store.getState().pictureCompressState.dataPictures;
         }
         //innitialisation du template
-        this.innerHTML = galeryPicture(this.listCards);
+        this.innerHTML = galeryPicture(test);
 
         store.subscribe(() => {
             // récupération des information de la nouvelle liste des images compréssées
             this.listCards = store.getState().pictureCompressState.dataPictures;
             // mis à jour du template
-            this.innerHTML = galeryPicture(this.listCards);
+            this.innerHTML = galeryPicture(test);
         });
             
     }
