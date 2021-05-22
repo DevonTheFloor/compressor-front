@@ -3,10 +3,10 @@ import "./galery.scss";
 import store from "../../redux/rooterducer";
 
 //template
-const galeryPicture = (ListCard) => {
+const galeryPicture = (listCard) => {
     return `
     <ul>
-        ${ListCard.map((card) => `
+        ${listCard.map((card) => `
 
             <li><card-image picture-link="${card.pinctureLink}"></card-image></li>
 
@@ -23,22 +23,22 @@ export default class Galery extends HTMLElement {
     
     constructor() {
         super();
-        this.ListCards = [];
+        this.listCards = [];
     }
 
     connectedCallback() { 
         //récupération des informations de la liste des images compressées
         if (store.getState().pictureCompressState.dataPictures) {
-            this.ListCards = store.getState().pictureCompressState.dataPictures;
+            this.listCards = store.getState().pictureCompressState.dataPictures;
         }
         //innitialisation du template
-        this.innerHTML = galeryPicture(this.ListCards);
+        this.innerHTML = galeryPicture(this.listCards);
 
         store.subscribe(() => {
             // récupération des information de la nouvelle liste des images compréssées
-            this.ListCards = store.getState().pictureCompressState.dataPictures;
+            this.listCards = store.getState().pictureCompressState.dataPictures;
             // mis à jour du template
-            this.innerHTML = galeryPicture(this.ListCards);
+            this.innerHTML = galeryPicture(this.listCards);
         });
             
     }
