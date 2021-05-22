@@ -44,6 +44,7 @@ const startCompressFiles = (event) => {
             type: "DECREMENT_NUMBER_PICTURE_COMPRESS",
         });
         //ajout de l'url de l'image dans le tableau des images compressées/ (passer par redux?)
+        //a faire: ajouter size, rangeValue,
         store.dispatch({
             type: "ADD_NEW_LINK_PICTURE",
             newDataPictures: {pinctureLink}
