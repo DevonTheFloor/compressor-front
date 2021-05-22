@@ -2,7 +2,7 @@ import "./card-image.scss";
 import "./card-image-service.js";
 import $dom from "../../helpers/dom";
 import { deleteImage } from "./card-image-service";
-import store from "../../redux/rooterducer";
+// import store from "../../redux/rooterducer";
 
 
 export default class CardImage extends HTMLElement{

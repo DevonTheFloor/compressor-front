@@ -7,10 +7,9 @@
     pictureCompressUrl,
     pictureOrigineUrl 
 }; */
-export default {
 
-    deleteImage() {
-        console.log("DELETE Function");
-    },
+const deleteImage = () => {
+    console.log("DELETE Function");
 };
 
+export { deleteImage };
