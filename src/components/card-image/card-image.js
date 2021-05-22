@@ -7,25 +7,41 @@ import { deleteImage } from "./card-image-service";
 
 export default class CardImage extends HTMLElement{
 
-    static get observedAttributes() { return ["picture-link"];}
+    static get observedAttributes() { return ["picture-link", "size", "rangeValue"];}
 
     constructor() {
         super();
-        this.pictureLink = pictureLink;
+        this.pictureLink = "";
+        this.size = "";
+        this.rangeValue = "";
     }
+    // ajouter resolution="${card.resolution}"
+    // communication ek parent via redux input-range
+
     connectedCallback() {
+  
+        if (this.getAttribute("picture-link")) {
+            this.pictureLink = this.getAttribute("picture-link");
+        }
+        if (this.getAttribute("size")) {
+            this.size = this.getAttribute("size");
+        }
+        if (this.getAttribute("rangeValue")) {
+            this.size = this.getAttribute("rangeValue");
+        }
+        this.pictureLink = "";
+        this.size = "";
+        this.rangeValue = "";
+
         this.innerHTML = `
         <div class="card-image"
-            picture-link="${card.pictureLink}"
-            compressId="${card.compressId}"
-            resolution="${card.resolution}"
-            size="${card.size}"
-            rangeValue="${card.rangeValue}"
-            pictureOriginUrl="${card.pictureOriginUrl}">
+            picture-link="${this.pictureLink}"
+            size="${this.size}"
+            rangeValue="${this.rangeValue}">
             <div>
                 <p>TEST</p>
                 <figure>
-                    <img src="https://media.nauticamilanonline.com/product/figura-obelix-asterix-el-galo-6cm-800x800.jpg" class="monitor">
+                    <img src="${this.pictureLink}" class="monitor">
                 </figure>
             </div>
             <div>
