@@ -29,10 +29,7 @@ export default class CardImage extends HTMLElement{
         if (this.getAttribute("rangeValue")) {
             this.size = this.getAttribute("rangeValue");
         }
-        this.pictureLink = "";
-        this.size = "";
-        this.rangeValue = "";
-
+       
         this.innerHTML = `
         <div class="card-image"
             picture-link="${this.pictureLink}"
@@ -41,7 +38,7 @@ export default class CardImage extends HTMLElement{
             <div>
                 <p>TEST</p>
                 <figure>
-                    <img src="${this.pictureLink}" class="monitor">
+                    <img src=${this.pictureLink} class="monitor">
                 </figure>
             </div>
             <div>

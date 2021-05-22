@@ -11,10 +11,10 @@ const galeryPicture = (listCard) => {
         ${listCard.map((card) => `
 
             <li><card-image
-            picture-link="${card.pinctureLink}
+            picture-link="${card.pinctureLink}"
             size="${card.size}"
             rangeValue="${card.rangeValue}"
-            "></card-image></li>
+            ></card-image></li>
 
         `).join("")}
     </ul>
